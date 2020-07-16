@@ -55,8 +55,8 @@ var setRemSize = function (htmlDom) {
     log(gameapp.isVertical)
     var remSize = screenWidth / 10;
     if (remSize >= 30) {
-        if (remSize > 157) {
-            remSize = 157;
+        if (remSize > 120) {
+            remSize = 120;
         }
         htmlDom.style.fontSize = remSize + 'px';
     }
