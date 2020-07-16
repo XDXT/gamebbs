@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Nav</title>
+    <link rel="shortcut icon" href="/img/favicon.ico"/>
+    <link rel="bookmark" href="/img/favicon.ico"/>
+    <!-- 引用库 -->
+    <link rel="stylesheet" href="/lib/bootstrap.min.css">
+    <!-- 主要css -->
+    <link rel="stylesheet" href="/css/common/common.css">
+    <link rel="stylesheet" href="/css/game/index_animation.css">
+    <link rel="stylesheet" href="/css/game/index.css">
+    <!-- 工具类 JS -->
+    <script src="/js/common/utils.js"></script>
+    <script src="/js/common/event.js"></script>
+</head>
+<body>
+    <!-- main plate 主体板块 start -->
+    <div class="frame-shake"> 
+        <div class="frame-turn">
+            <div class="frame shadow">
+                <!-- cards 卡片 start -->
+                <li class="choose_card shadow" title="游戏页面">
+                    <a href="#">
+                        <div class="card_hover_font" style="color: #4E9BFC;">游戏区</div>
+                    </a>
+                    <a target="_self" class="card_img"  href="/game/play"></a>
+                </li>
+                <li class="choose_card shadow" title="论坛页">
+                    <a href="#">
+                        <div class="card_hover_font" style="color: #DB5705;">论坛区</div>
+                    </a>
+                    <a target="_self" href="#" class="card_img" href="/game/user/login"></a>
+                </li>
+                <li class="choose_card shadow link-notallow" title="实验测试页">
+                    <a href="#">
+                        <div class="card_hover_font" style="color: #DB5705;">测试区</div>
+                    </a>
+                    <a target="_self" href="#" class="card_img"></a>
+                </li>
+                <!-- cards 卡片 end -->
+            </div>
+        </div>
+    </div>
+    <!-- main plate 主体板块 start -->
+
+    <script>
+        bindRem();
+        window.onload = function () {
+            setRemSize(query("html"));
+        }
+    </script>
+</body>
+</html>

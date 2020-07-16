@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>game cube</title>
+    <link rel="shortcut icon" href="/img/favicon.ico"/>
+    <link rel="bookmark" href="/img/favicon.ico"/>
+    <!-- css 样式 -->
+    <link rel="stylesheet" href="/lib/layui/css/layui.css"  media="all">
+    <link rel="stylesheet" href="/css/game/game.css">
+    <!-- 页面事件/lib包 -->
+    <script src="/lib/vue.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <!-- 调试/配置数据 -->
+    <script src="/js/game/gameutils.js"></script>
+    <script src="/js/game/config/config.js"></script>
+    <script src="/js/game/config/level.js"></script>
+</head>
+<body>
+    <div class="game-chose" id="choseapp">
+        <div :class="{'screen-chose': true, 'hidden': ishidden}">
+            <!-- TODO: ajax data -> vue components load -->
+            <div class="chose-item" @click="replaceGame('flappyBird')">
+                <div class="item-img"></div>
+                <div class="item-introduce">Flappy Bird</div>
+            </div>
+            <div class="chose-item" @click="replaceGame('escape')">
+                <div class="item-img"></div>
+                <div class="item-introduce">Escape</div>
+            </div>
+            <button type="button" 
+                    class="layui-btn layui-btn-fluid" 
+                    @click="toogleChose">{{ button }}</button>
+        </div>
+        <button type="button" 
+                class="layui-btn layui-btn-fluid" 
+                @click="toogleChose">{{ button }}</button>
+    </div>
+<!--  -->
+    <div :class="{'game': true, 'vertical': isVertical}" id="gameapp">
+        <!-- game body 游戏主体 start -->
+        <div class="game-boddy">
+            <div class="boddy-left">
+                <div class="left-title">
+                    <span>Fps: {{gameFps}} </span>
+                    <span>Scope: {{scope}} </span>
+                    <span>Tip: {{ gameTips }}</span>
+                </div>
+                <div class="game-canvas">
+                    <canvas  id="canvas" width="600" height="600"></canvas>
+                </div>
+            </div>
+            <!-- game info 游戏排名信息 start -->
+            <div class="boddy-right">
+                <div class="ranking-title">Top player</div>
+                <div class="ranking-content">
+                    <div class="ranking-player" v-for="(player, index) in rankPlayers">
+                        <div class="player-ranking">{{ index + 1 }}</div>
+                        <div class="player-name">{{player.name}}</div>
+                        <div class="player-scope">{{player.scope}}</div>
+                    </div>
+                </div>
+            </div>
+            <!-- game info 游戏排名信息 end -->
+        </div>
+        <!-- game body 游戏主体 end -->
+        <div class="game-footer"></div>
+    </div>
+    <!-- main.js: 1.load game js/images by promise, 2.start game  -->
+    <script src="/js/game/main.js"></script>
+</body>
+</html>
