@@ -1,2 +1,2 @@
 # service supervisor restart 
-supervisorctrl restart gamebbs
+supervisorctl restart gamebbs
