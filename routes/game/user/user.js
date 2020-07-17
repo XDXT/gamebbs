@@ -29,17 +29,37 @@ router.post('/register', async function (req, res) {
 
 router.post('/login', async function (req, res) {
     let username = req.body.username;
-    let password = myutils.routeUtils.md5Encryption(req.body.password);
-    let sql = myutils.sqlMap.login();
-    let users = await myutils.sqlQuery(sql, [username, password]);
-    if (!users || users.length != 1) {
-        res.render("tip/tips", myutils.routeUtils.simpleTip("loginfailed"));
+    let userExists = await isUserExists(username);
+    if (!userExists) {
+        res.render("tip/tips", myutils.routeUtils.simpleTip("namenotexists"));
     } else {
-        req.session.isLogin = true;
-        req.session.username = username;
-        req.session.userId = users[0].id;
-        req.session.isAdmin = (users[0].roleid > 10);
-        res.render("tip/tips", myutils.routeUtils.simpleTip("loginsuccess"));
+        let password = myutils.routeUtils.md5Encryption(req.body.password);
+        let sql = myutils.sqlMap.login();
+        let users = await myutils.sqlQuery(sql, [username, password]);
+        if (!users || users.length != 1) {
+            res.render("tip/tips", myutils.routeUtils.simpleTip("loginfailed"));
+        } else {
+            let authSql = myutils.sqlMap.select("role_auth", ["authid", "roleid"]);
+            authSql = myutils.sqlMap.whereAnd(authSql, ["roleid"], "=");
+            let authIdList = await myutils.sqlQuery(authSql, [users[0].roleid]);
+
+            let authList = [];
+            let sql = myutils.sqlMap.select("auth", ["id", "authurl"]);
+            sql = myutils.sqlMap.whereAnd(sql, ["id"], "=");
+            for (let i = 0; i < authIdList.length; i++) {
+                let item = authIdList[i];
+                let result = await myutils.sqlQuery(sql, [item.authid]);
+                authList.push(result[0].authurl);
+            }
+
+            req.session.isLogin = true;
+            req.session.username = username;
+            req.session.userId = users[0].id;
+            req.session.isAdmin = (users[0].roleid > 0);
+            req.session.authList = authList;
+
+            res.render("tip/tips", myutils.routeUtils.simpleTip("loginsuccess"));
+        }
     }
 });
 
@@ -64,7 +84,3 @@ router.get('/logout', function (req, res, next) {
 });
 
 module.exports = router;
-// userlistAll: "SELECT user.id as id, username, phone, email, adress, headimg, deleteFlag, rolename, roleid, privilege"
-// + " FROM user LEFT JOIN role ON user.roleid=role.id",
-// userlistName: "SELECT user.id as id,username,phone,email,adress,headimg,deleteFlag,rolename,roleid,privilege"
-//     + " FROM user LEFT JOIN role ON user.roleid=role.id WHERE user.username LIKE ?",

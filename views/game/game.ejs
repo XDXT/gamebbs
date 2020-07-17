@@ -16,8 +16,14 @@
     <script src="/js/game/gameutils.js"></script>
     <script src="/js/game/config/config.js"></script>
     <script src="/js/game/config/level.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
-<body class="unselect">
+<body>
     <div class="game-chose" id="choseapp">
         <div :class="{'screen-chose': true, 'hidden': ishidden}">
             <!-- TODO: ajax data -> vue components load -->
@@ -38,7 +44,7 @@
                 @click="toogleChose">{{ button }}</button>
     </div>
 <!--  -->
-    <div :class="{'game': true, 'vertical': isVertical}" id="gameapp">
+    <div :class="{'unselect': true, 'game': true, 'vertical': isVertical}" id="gameapp">
         <!-- game body 游戏主体 start -->
         <div class="game-boddy">
             <div class="boddy-left">

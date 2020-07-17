@@ -94,6 +94,9 @@ var initGameFrame = function (imageDoms) {
 var __main = function () {
     bindRem();
     initGameFrame();
+    query(".unselect").addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+    });
 }
 
 __main();

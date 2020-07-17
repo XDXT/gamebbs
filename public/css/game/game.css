@@ -8,12 +8,15 @@ html,body {
 }
 /**********************phone*************************/
 .unselect {
-    user-select: none;
+    -webkit-touch-callout: none;
+    -moz-touch-callout: none;
     -webkit-user-select: none;
+    -khtml-user-select: none;
     -moz-user-select: none;
     -moz-user-select: none;
+    -ms-user-select:none;
+    user-select: none;
 }
-
 
 /********************game chose************************/
 .layui-btn {

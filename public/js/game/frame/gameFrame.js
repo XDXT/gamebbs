@@ -15,7 +15,6 @@ class GameFrame {
         this.pause = false;
         this.canvas = query('#canvas');
         this.context = this.canvas.getContext('2d');
-        this.runCount = 0;
         this.isRunning = false;
         this.init();
     }
@@ -155,17 +154,10 @@ class GameFrame {
 
     logRealFps() {
         var self = this;
-        self.count = this.runCount;
         setInterval(() => {
-            let gameFps = self.count - this.runCount;
-            // gameFps /= 10;
-            // gameFps = Math.round(gameFps)*10;
-            // if (gameFps == 60 || gameFps == 70) {
-            //     gameFps = 60;
-            // } 
-            self.gameapp.gameFps = gameFps;
-            self.count = this.runCount;
-        }, 1000)
+            self.gameapp.gameFps = self.count;
+            self.count = 0;
+        }, 1000);
     }
 
     runWithGame(game) {
