@@ -1,1 +1,2 @@
-supervisor -i ./public bin/www
+# service supervisor restart 
+supervisorctrl restart gamebbs
