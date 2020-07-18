@@ -49,9 +49,7 @@ var loadGameJs = function (dom, jsSrc) {
     return new Promise(function (resolve, reject) {
         var script = document.createElement("script"); 
         script.type = 'text/javascript';
-        script.src = jsSrc;
-        dom.appendChild(script);
-        // IE：人间不值得，算了算了放弃我
+        // IE：人间不值得
         // script.onload = script.onreadystatechange = function () {
         //     if (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete') {
         //         resolve(img);
@@ -63,16 +61,19 @@ var loadGameJs = function (dom, jsSrc) {
         script.onerror = function () {
             reject('connect erro');
         }
+        script.src = jsSrc;
+        dom.appendChild(script);
+
     })
 }
 
 // 载入游戏框架与游戏js
 var loadJsData = function (jsConfig, callback) {
     var promiseList = [];
-    let bodyDom = query("body");
+    let headDom = query("head");
     for (let i = 0; i < jsConfig.length; i++) {
         let jsUrl = jsConfig[i];
-        promiseList.push(loadGameJs(bodyDom, jsUrl));
+        promiseList.push(loadGameJs(headDom, jsUrl));
     }
     Promise.all(promiseList).then(() => {
         callback();

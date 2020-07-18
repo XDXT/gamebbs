@@ -52,16 +52,16 @@ html,body {
 
 .chose-item {
     margin: auto;
-    width: 2rem;
-    height: 2.61rem;
-    border-radius: 10%;
+    width: 3rem;
+    height: 3.91rem;
+    border-radius: 13%;
     background-color: #67d2e1;
     transition: all 1s;
 }
 
-.chose-item:hover {
+.chose-item:hover,.chose-item.active {
     transform: scale(1.05);
-    box-shadow: 0 0.1rem 0.15rem 0 #88d0e5;
+    box-shadow: 0 0.15rem 0.26rem 0 #88d0e5;
     transition: all 1s;
     cursor: pointer;
 }
@@ -73,21 +73,21 @@ html,body {
     transition: all 1s;
     width: 100%;
     height: 50%;
-    bottom: -0.07rem;
+    bottom: -0.125rem;
     z-index: -1;
-    border-bottom-left-radius: 14%;
-    border-bottom-right-radius: 14%;
+    border-bottom-left-radius: 19%;
+    border-bottom-right-radius: 19%;
 }
 
-.chose-item:hover:after {
+.chose-item:hover:after,.chose-item.active:after {
     background-color: #36c8de;
 }
 
 .item-img {
-    border-top-left-radius: 12%;
-    border-top-right-radius: 12%;
+    border-top-left-radius: 15%;
+    border-top-right-radius: 15%;
     width: 100%;
-    height: 1.28rem;
+    height: 1.92rem;
     background: url('/img/game/gamecover/flappy-cover.png') no-repeat;
     background-size: 100% 100%;
 }
@@ -95,14 +95,14 @@ html,body {
 .item-introduce {
     background-color: #67d2e1;
     width: 100%;
-    height: 1.33rem;
+    height: 1.99rem;
     text-align: center;
-    font-size: 0.3rem;
+    font-size: 0.4rem;
     font-weight: 900;
-    line-height: 1rem;
+    line-height: 1.2rem;
     color: #fff;
-    border-bottom-left-radius: 12%;
-    border-bottom-right-radius: 12%;
+    border-bottom-left-radius: 15%;
+    border-bottom-right-radius: 15%;
 }
 
 
@@ -118,11 +118,11 @@ html,body {
     background-color: #ffb129;
 }
 
-.chose-item:nth-child(1):hover {
-    box-shadow: 0 0.1rem 0.15rem 0 #f3a317;
+.chose-item:nth-child(1):hover,.chose-item:nth-child(1).active {
+    box-shadow: 0 0.15rem 0.26rem 0 #f3a317;
 }
 
-.chose-item:nth-child(1):hover:after {
+.chose-item:nth-child(1):hover:after,.chose-item:nth-child(1).active:after  {
     background-color: #f7a61b;
 }
 
@@ -138,11 +138,11 @@ html,body {
     background-color: #e65c62;
 }
 
-.chose-item:nth-child(2):hover {
-    box-shadow: 0 0.1rem 0.15rem 0 #e43d46;
+.chose-item:nth-child(2):hover,.chose-item:nth-child(2).active {
+    box-shadow: 0 0.15rem 0.26rem 0 #e43d46;
 }
 
-.chose-item:nth-child(2):hover:after {
+.chose-item:nth-child(2):hover:after,.chose-item:nth-child(2).active:after  {
     background-color: #e6474f;
 }
 

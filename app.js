@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var logger = require('morgan');
+var myutils = require('bbs-utils');
 
 // 引入路由
 var indexRouter = require('./routes/index');
@@ -56,5 +57,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('tip/error');
 });
+
+myutils.routeUtils.mylog("启动网站");
 
 module.exports = app;

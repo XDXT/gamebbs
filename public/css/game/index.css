@@ -15,7 +15,7 @@ body {
     -webkit-filter: grayscale(0.9);
 }
 
-.choose_card:nth-child(1):hover {
+.choose_card:hover {
     opacity: 1;
 }
 
@@ -61,6 +61,14 @@ body {
         background-position: center center;
     }
 
+    /* animation 1 板块出现动画: 板块出现，缩小，旋转 */
+    .frame {
+        perspective: 2500px;
+        animation: Frame 1s;
+        -webkit-animation: Frame 1s;
+        -moz-animation: Frame 1s;
+    } 
+    
     /* animation 2 ，卡片插入动画: 单数向下、双数向上 */
     .frame>.choose_card:nth-child(2n+1) {
         animation: card_1 4s;
@@ -87,35 +95,6 @@ body {
         -moz-animation: card_img_2 4s;
     }
 
-    /***********通用，这里为了刷新效果重复放了**********/
-    /* animation 1 板块出现动画: 板块出现，缩小，旋转 */
-    .frame {
-        perspective: 2500px;
-        animation: Frame 1s;
-        -webkit-animation: Frame 1s;
-        -moz-animation: Frame 1s;
-    } 
-
-    /*animation 3 ，快加载完时，版快抖动*/
-    .frame-shake {
-        animation: frame_shake 1s ease 3s;
-        -webkit-animation: frame_shake 1s ease 3s;
-        -moz-animation: frame_shake 1s ease 3s;
-    }
-
-    /* animation 5 文字缓缓出现 */
-    .card_hover_font {
-        animation: text_color_delay 5s;
-        -webkit-animation: text_color_delay 5s;
-        -moz-animation: text_color_delay 5s;
-    }
-
-    /*animation 6 版面来回摇晃*/
-    .frame-turn {
-        animation: frame_turn 10s infinite;
-        -webkit-animation: frame_turn 10s infinite;
-        -moz-animation: frame_turn 10s infinite;
-    }
 }
 
 @media only screen and (min-width: 100px) and (max-width: 1000px){
@@ -163,6 +142,14 @@ body {
         background-position: center center;
     }
 
+    /* animation 1 板块出现动画: 板块出现，缩小，旋转 */
+    .frame {
+        perspective: 2500px;
+        animation: Frame_x 1s;
+        -webkit-animation: Frame_x 1s;
+        -moz-animation: Frame_x 1s;
+    } 
+
     /* animation 2 ，卡片插入动画: 单数向下、双数向上 */
     .frame>.choose_card:nth-child(2n+1) {
         animation: card_1_x 4s;
@@ -188,39 +175,28 @@ body {
         -webkit-animation: card_img_2_x 4s;
         -moz-animation: card_img_2_x 4s;
     }
-
-    /***********通用，这里为了刷新效果重复放了**********/
-    /* animation 1 板块出现动画: 板块出现，缩小，旋转 */
-    .frame {
-        perspective: 2500px;
-        animation: Frame 1s;
-        -webkit-animation: Frame 1s;
-        -moz-animation: Frame 1s;
-    } 
-
-    /*animation 3 ，快加载完时，版快抖动*/
-    .frame-shake {
-        animation: frame_shake 1s ease 3s;
-        -webkit-animation: frame_shake 1s ease 3s;
-        -moz-animation: frame_shake 1s ease 3s;
-    }
-
-    /* animation 5 文字缓缓出现 */
-    .card_hover_font {
-        animation: text_color_delay 5s;
-        -webkit-animation: text_color_delay 5s;
-        -moz-animation: text_color_delay 5s;
-    }
-
-    /*animation 6 版面来回摇晃*/
-    .frame-turn {
-        animation: frame_turn 10s infinite;
-        -webkit-animation: frame_turn 10s infinite;
-        -moz-animation: frame_turn 10s infinite;
-    }
 }
 
+/***********通用**********/
+/*animation 3 ，快加载完时，版快抖动*/
+.frame-shake {
+    animation: frame_shake 1s ease 3s;
+    -webkit-animation: frame_shake 1s ease 3s;
+    -moz-animation: frame_shake 1s ease 3s;
+}
 
+/* animation 5 文字缓缓出现 */
+.card_hover_font {
+    animation: text_color_delay 5s;
+    -webkit-animation: text_color_delay 5s;
+    -moz-animation: text_color_delay 5s;
+}
 
+/*animation 6 版面来回摇晃*/
+.frame-turn {
+    animation: frame_turn 10s infinite;
+    -webkit-animation: frame_turn 10s infinite;
+    -moz-animation: frame_turn 10s infinite;
+}
 
 

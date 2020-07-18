@@ -98,23 +98,33 @@ router.get('/delete/:authId', async function (req, res) {
             message: "id为数字且不能为0"
         });
     } else {
+        let result1 = false,
+            result2 = false;
         // TODO begin deleterole
         let dauthSql = myutils.sqlMap.delete("auth");
         dauthSql = myutils.sqlMap.whereAnd(dauthSql, ["id"], "=");
-        let result1 = myutils.sqlQuery(dauthSql, [authId]);
+        result1 = myutils.sqlQuery(dauthSql, [authId]);
 
         // result1 == false  rollback, return
-        let dshipSql = myutils.sqlMap.delete("role_auth");
-        dshipSql = myutils.sqlMap.whereAnd(dshipSql, ["authid"], "=");
-        let result2 = myutils.sqlQuery(dshipSql, [authId]);
+        if (result1) {
+            let dshipSql = myutils.sqlMap.delete("role_auth");
+            dshipSql = myutils.sqlMap.whereAnd(dshipSql, ["authid"], "=");
+            result2 = myutils.sqlQuery(dshipSql, [authId]);
+        }
 
         if (result1 && result2) {
             // commit deleterole
+            let content = "id: " + req.session.id + " " + req.session.username + "删除了";
+            content += "管理权限auth id =" + authId;
+            myutils.routeUtils.mylog(content);
             res.json({
                 state: "ok",
                 message: "删除成功"
             });
         } else {
+            let content = "id: " + req.session.id + " " + req.session.username + "删除";
+            content += "管理权限auth id =" + authId + "失败";
+            myutils.routeUtils.mylog(content);
             res.json({
                 state: "fail",
                 message: "删除失败"

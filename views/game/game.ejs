@@ -27,11 +27,11 @@
     <div class="game-chose" id="choseapp">
         <div :class="{'screen-chose': true, 'hidden': ishidden}">
             <!-- TODO: ajax data -> vue components load -->
-            <div class="chose-item" @click="replaceGame('flappyBird')">
+            <div :class="{'chose-item': true, 'active': isActive[0]}" @click="replaceGame('flappyBird',0)">
                 <div class="item-img"></div>
                 <div class="item-introduce">Flappy Bird</div>
             </div>
-            <div class="chose-item" @click="replaceGame('escape')">
+            <div :class="{'chose-item': true, 'active': isActive[1]}" @click="replaceGame('escape',1)">
                 <div class="item-img"></div>
                 <div class="item-introduce">Escape</div>
             </div>

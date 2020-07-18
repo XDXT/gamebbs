@@ -89,15 +89,15 @@
                             method: "get",
                             url: "/admin/auths/auth/delete/"+id,
                         }).then(function (res) {
-                            layer.msg(res.message, {
-                                icon: 5,
-                                time: 1000
-                            });
                             if (res.state == "ok") {
                                 location.reload();
                                 // $(obj).parents("tr").remove();
                                 layer.close(index);
-                            } 
+                            }
+                            layer.msg(res.message, {
+                                icon: 5,
+                                time: 1000
+                            });
                         });
                     });
                 }

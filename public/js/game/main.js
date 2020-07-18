@@ -2,7 +2,8 @@ var choseapp = new Vue({
     el: '#choseapp',
     data: { 
         ishidden: false,
-        button: '关闭选项'
+        button: '关闭选项',
+        isActive: [false, false]
 
     },
     methods: {
@@ -18,7 +19,11 @@ var choseapp = new Vue({
                 this.button = '关闭选项';
             }
         },
-        replaceGame(gameName) {
+        replaceGame(gameName, id) {
+            for (let i = 0; i < this.isActive.length; i++) {
+                this.isActive[i] = false;
+            }
+            this.isActive[id] = true;
             this.toogleChose("", true);
             localStorage.game = gameName;
             window.gf.runWithGame(SimpleScene.new(gf, gameName, "start"));
@@ -52,7 +57,6 @@ var setRemSize = function (htmlDom) {
     } else {
         gameapp.isVertical = false;
     }
-    log(gameapp.isVertical)
     var remSize = screenWidth / 10;
     if (remSize >= 30) {
         if (remSize > 120) {
@@ -70,7 +74,7 @@ var bindRem = function () {
     }
 }
 
-var initGameFrame = function (imageDoms) {
+var initGameFrame = function () {
     // 载入游戏资源
     loadJsData(gameEngine, () => {
         loadImageData(gameImages, function (imageDoms) {
@@ -83,7 +87,8 @@ var initGameFrame = function (imageDoms) {
 
             setTimeout(() => {
                 if (choseapp.ishidden) {
-                    choseapp.replaceGame(localStorage.game);
+                    let id = localStorage.game == "escape"?1:0;
+                    choseapp.replaceGame(localStorage.game, id);
                 }
             }, 700);
         });

@@ -32,8 +32,8 @@ router.post('/', async function (req, res) {
     });
   } else {
     let result1 = false,
-      result2 = false,
-      result3 = false;
+        result2 = false,
+        result3 = false;
     // 插入用户表
     let password = myutils.routeUtils.md5Encryption(req.body.password);
     let sql = myutils.sqlMap.insert("user", ['username', 'password']);

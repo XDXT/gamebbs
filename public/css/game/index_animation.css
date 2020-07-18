@@ -56,6 +56,38 @@
     }
 }
 
+@keyframes Frame_x {
+    0% {
+        opacity: 0;
+        transform: rotateY(-360deg) translate(300px, 0);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateY(0deg) translate(0, 0);
+    }
+}
+
+@-webkit-keyframes Frame_x {
+    0% {
+        opacity: 0;
+        -webkit-transform: rotateY(-360deg) translate(300px, 0);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: rotateY(0deg) translate(0, 0);
+    }
+}
+
+@-moz-keyframes Frame_x {
+    0% {
+        opacity: 0;
+        -moz-transform: rotateY(-360deg) translate(300px, 0);
+    }
+    100% {
+        opacity: 1;
+        -moz-transform: rotateY(0deg) translate(0, 0);
+    }
+}
 /*
 * 卡片插入， 从上到下或从下到上
 * [从消失到出现]: opacity 0 -> 1

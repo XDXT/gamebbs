@@ -9,13 +9,13 @@ var authsRouter = require("./auths/auths");
 
 
 // 用户验证
-// router.use((req, res, next) => {
-//   if (!req.session.isAdmin) {
-//     res.render("tip/tips", myutils.routeUtils.simpleTip("auth"));
-//   } else {
-//     next();
-//   }
-// });
+router.use((req, res, next) => {
+  if (!req.session.isAdmin) {
+    res.render("tip/tips", myutils.routeUtils.simpleTip("auth"));
+  } else {
+    next();
+  }
+});
 
 /* GET admins listing. */
 router.get('/', function (req, res) {
@@ -45,11 +45,11 @@ function authMatch(req, res, next) {
   if (verifyResult) {
     next();
   } else {
-    res.render("tips", myutils.routeUtils.simpleTip("403"));
+    res.render("tip/tips", myutils.routeUtils.simpleTip("403"));
   }
 }
 
-// router.use(authMatch);
+router.use(authMatch);
 
 // 用户管理
 router.use('/users', usersRouter);

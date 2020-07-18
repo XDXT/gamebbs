@@ -87,26 +87,40 @@ router.get('/delete/:roleId', async function (req, res) {
             message: "id为数字且不能为0"
         });
     } else {
+        let result1 = false,
+            result2 = false,
+            result3 = false;
+
         // TODO begin deleterole
         let droleSql = myutils.sqlMap.delete("role");
         droleSql = myutils.sqlMap.whereAnd(droleSql, ["id"], "=");
-        let result1 = myutils.sqlQuery(droleSql, [roleId]);
+        result1 = myutils.sqlQuery(droleSql, [roleId]);
         // result1 == false  rollback, return | 以下result2，result3类推
-        let dauthSql = myutils.sqlMap.delete("role_auth");
-        dauthSql = myutils.sqlMap.whereAnd(dauthSql, ["roleid"], "=");
-        let result2 = myutils.sqlQuery(dauthSql, [roleId]);
+        if (result1) {
+            let dauthSql = myutils.sqlMap.delete("role_auth");
+            dauthSql = myutils.sqlMap.whereAnd(dauthSql, ["roleid"], "=");
+            result2 = myutils.sqlQuery(dauthSql, [roleId]);
+        }
 
-        let updateSql = myutils.sqlMap.update("user", "roleid");
-        updateSql = myutils.sqlMap.whereAnd(updateSql, ["roleid"], "=");
-        let result3 = myutils.sqlQuery(updateSql, [0]);
+        if (result2) {
+            let updateSql = myutils.sqlMap.update("user", "roleid");
+            updateSql = myutils.sqlMap.whereAnd(updateSql, ["roleid"], "=");
+            result3 = myutils.sqlQuery(updateSql, [0]);
+        }
         
         if (result1 && result2 && result3) {
             // commit deleterole
+            let content = "id: " + req.session.id + " " + req.session.username + "删除了";
+            content += "角色 roleid id =" + roleId;
+            myutils.routeUtils.mylog(content);
             res.json({
                 state: "ok",
                 message: "删除成功"
             });
         } else {
+            let content = "id: " + req.session.id + " " + req.session.username + "删除";
+            content += "角色 roleid id =" + roleId + "失败";
+            myutils.routeUtils.mylog(content);
             res.json({
                 state: "fail",
                 message: "删除失败"
