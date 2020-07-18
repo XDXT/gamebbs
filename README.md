@@ -63,7 +63,7 @@ server {
 	# 可添加域名
     listen 80;
     location / {
-        proxy_pass http://localhost:3000;
+        proxy_pass http://localhost:30000;
     }
 }
 ```
