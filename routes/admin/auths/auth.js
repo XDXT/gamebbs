@@ -86,8 +86,41 @@ router.post('/add', async function (req, res) {
 
 });
 
+// todo token=? md5(timstamp+xxx) / uuid
+router.get('/delete/:authId', async function (req, res) {
+    let authId = req.params.authId || "";
+    let reg = /^[0-9]{1,}$/;
+    let result = reg.test(authId);
 
+    if (!result || authId == 0) {
+        res.json({
+            state: "fail",
+            message: "id为数字且不能为0"
+        });
+    } else {
+        // TODO begin deleterole
+        let dauthSql = myutils.sqlMap.delete("auth");
+        dauthSql = myutils.sqlMap.whereAnd(dauthSql, ["id"], "=");
+        let result1 = myutils.sqlQuery(dauthSql, [authId]);
 
+        // result1 == false  rollback, return
+        let dshipSql = myutils.sqlMap.delete("role_auth");
+        dshipSql = myutils.sqlMap.whereAnd(dshipSql, ["authid"], "=");
+        let result2 = myutils.sqlQuery(dshipSql, [authId]);
 
+        if (result1 && result2) {
+            // commit deleterole
+            res.json({
+                state: "ok",
+                message: "删除成功"
+            });
+        } else {
+            res.json({
+                state: "fail",
+                message: "删除失败"
+            });
+        }
+    }
+});
 
 module.exports = router;

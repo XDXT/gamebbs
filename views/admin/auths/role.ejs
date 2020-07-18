@@ -38,15 +38,12 @@
 				</button>
             </div>
             
-			<table class="layui-table" id="authList">
+			<table class="layui-table" id="roleList">
 				
             </table>
 
             <script type="text/html" id="toolbar">
-                <a title="编辑" onclick="WeAdminEdit('编辑','/admin/users/role/edit?roleId={{d.id}}', 1, 600, 400)" href="javascript:;">
-                    <i class="layui-icon layui-icon-edit"></i>
-                </a>
-                <a title="删除" onclick="auth_delete(this,'{{d.id}}')" href="javascript:;">
+                <a title="删除" onclick="role_delete(this,'{{d.id}}')" href="javascript:;">
                     <i class="layui-icon layui-icon-delete"></i>
                 </a>
             </script>
@@ -64,32 +61,33 @@
 
                 //第一个实例
                 table.render({
-                    elem: '#authList'
+                    elem: '#roleList'
                     ,height: 312
                     ,url: '/admin/auths/role/roleList' //数据接口
                     ,page: true //开启分页
                     ,cols: [[ //表头
-                    {field: 'id', fixed: 'left', title: 'ID', width:'15%', sort: true}
-                    ,{field: 'rolename', title: '角色名', width:'25%', sort: true}
-                    ,{field: 'brief', title: '角色介绍', width:'30%', sort: true}
-                    ,{fixed: 'right', width:'30%', align:'center', toolbar: '#toolbar'} //渲染操作工具
+                    {field: 'id', fixed: 'left', title: 'ID', width:'20%', sort: true}
+                    ,{field: 'rolename', title: '角色名', width:'30%', sort: true}
+                    ,{field: 'brief', title: '角色介绍', width:'40%', sort: true}
+                    ,{fixed: 'right', width:'10%', align:'center', toolbar: '#toolbar'} //渲染操作工具
                     ]]
                 });
 
-                window.auth_delete = function (obj, id) {
-                    let statusDom = $(obj).parents("tr").find(".td-status").find('span');
+                window.role_delete = function (obj, id) {
                     layer.confirm('确认要删除吗？', function(index) {
                         $.ajax({
-                            method: "post",
-                            url: "/admin/role/delete",
-                            data: {"idList": [id]},
+                            method: "get",
+                            url: "/admin/auths/role/delete/"+id,
                         }).then(function (res) {
-                            $(obj).parents("tr").remove();
-                            layer.close(index);
-                            layer.msg('删除成功!', {
+                            layer.msg(res.message, {
                                 icon: 5,
                                 time: 1000
                             });
+                            if (res.state == "ok") {
+                                location.reload();
+                                // $(obj).parents("tr").remove();
+                                layer.close(index);
+                            } 
                         });
                     });
                 }

@@ -75,6 +75,47 @@ router.post('/add', async function (req, res) {
     }
 });
 
+// todo token=? md5(timstamp+xxx) / uuid
+router.get('/delete/:roleId', async function (req, res) {
+    let roleId = req.params.roleId || "";
+    let reg = /^[0-9]{1,}$/;
+    let result = reg.test(roleId);
+
+    if (!result || roleId == 0) {
+        res.json({
+            state: "fail",
+            message: "id为数字且不能为0"
+        });
+    } else {
+        // TODO begin deleterole
+        let droleSql = myutils.sqlMap.delete("role");
+        droleSql = myutils.sqlMap.whereAnd(droleSql, ["id"], "=");
+        let result1 = myutils.sqlQuery(droleSql, [roleId]);
+        // result1 == false  rollback, return | 以下result2，result3类推
+        let dauthSql = myutils.sqlMap.delete("role_auth");
+        dauthSql = myutils.sqlMap.whereAnd(dauthSql, ["roleid"], "=");
+        let result2 = myutils.sqlQuery(dauthSql, [roleId]);
+
+        let updateSql = myutils.sqlMap.update("user", "roleid");
+        updateSql = myutils.sqlMap.whereAnd(updateSql, ["roleid"], "=");
+        let result3 = myutils.sqlQuery(updateSql, [0]);
+        
+        if (result1 && result2 && result3) {
+            // commit deleterole
+            res.json({
+                state: "ok",
+                message: "删除成功"
+            });
+        } else {
+            res.json({
+                state: "fail",
+                message: "删除失败"
+            });
+        }
+    }
+});
+
+
 
 
 
