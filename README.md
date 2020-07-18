@@ -4,17 +4,15 @@
 
 ## Preview
 
-
-
-
+[点击直达](39.96.91.155)
 
 
 
 ## Requirements
 
-* npm   6.0+
+* **npm   6.0+**
 
-* node   v10.0+
+* **node   v10.0+**
 
   
 
@@ -46,3 +44,45 @@
     "mysql": "^2.18.1"
   }
 ```
+
+### Nginx & supervisor
+
+> **nginx**
+
+```
+# 从nginx.conf的默认配置来看还支持两种外部的配置
+# include /etc/nginx/conf.d/*.conf;
+# include /etc/nginx/sites-enabled/*;
+ln -s /var/www/gamebbs/gamebbs.nginx  /etc/nginx/sites-enabled/gamebbs
+```
+
+* **gamebbs.nginx **
+
+```
+server {
+	# 可添加域名
+    listen 80;
+    location / {
+        proxy_pass http://localhost:3000;
+    }
+}
+```
+
+> **supervisor(非npm的supervisor)**
+
+```
+# 格式需要*.conf
+ln -s /var/www/gamebbs/gamebbs.conf /etc/supervisor/conf.d/gamebbs.conf
+```
+
+```
+[program:gamebbs]
+command=node bin/www
+directory=/var/www/gamebbs
+autostart=true
+autorestart=true
+redirect_stderr=true
+```
+
+* **有概率supervisorctl  start gamebbs 找不到gamebbs的情况**
+* **service supervisor restart 一下**
