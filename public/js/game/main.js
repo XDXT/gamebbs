@@ -90,7 +90,7 @@ var initGameFrame = function () {
                     let id = localStorage.game == "escape"?1:0;
                     choseapp.replaceGame(localStorage.game, id);
                 }
-            }, 700);
+            }, 200);
         });
     })
 
