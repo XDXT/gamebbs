@@ -53,15 +53,15 @@
     </div>
     <!-- box 提示框 end -->
     <script>
-      layui.use(["jquery"], function (params) {
+      layui.use(['jquery'], function (params) {
         var $ = layui.jquery;
-        var timerDom = $(".box__description-text span");
+        var timerDom = $('.box__description-text span');
         var timer = parseInt(timerDom.text());
         
         // 限时跳转
         setInterval(() => {
           if (timer <= 0) {
-            location.href = "<%-redirect%>";
+            location.href = '<%-redirect%>';
           } else {
             timerDom.text(timer);
             timer--;
@@ -74,14 +74,14 @@
           var pageY = $(document).height();
           var mouseY = 0;
           var mouseX = 0;
-          $("body").mousemove(function (event) {
+          $('body').mousemove(function (event) {
             setTimeout(() => {
               mouseY = event.pageY;
               yAxis = ((pageY / 2 - mouseY) / pageY) * 300;
               mouseX = event.pageX / -pageX;
               xAxis = -mouseX * 100 - 100;
-              $(".box__ghost-eyes").css({
-                  transform: "translate(" + xAxis + "%,-" + yAxis + "%)",
+              $('.box__ghost-eyes').css({
+                  transform: 'translate(' + xAxis + '%,-' + yAxis + '%)',
                 },1000 / 60);
             });
           });

@@ -70,7 +70,7 @@
             //自定义验证规则
             form.verify({
                 authname: function(value, item){ //value：表单的值、item：表单的DOM对象
-                    if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
+                    if(!new RegExp('^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$').test(value)){
                     return '角色名不能有特殊字符';
                     }
                     if(/(^\_)|(\__)|(\_+$)/.test(value)){
@@ -85,17 +85,17 @@
             //监听提交
             form.on('submit(add)', function(data){
                 $.ajax({
-                    url:"/admin/auths/auth/add",    
-                    dataType:"json",
-                    contentType: "application/json; charset=utf-8",
+                    url:'/admin/auths/auth/add',    
+                    dataType:'json',
+                    contentType: 'application/json; charset=utf-8',
                     data: JSON.stringify(data.field),
-                    type:"POST",   
+                    type:'POST',   
                     success:function(req){
-                        if (req.state == "ok") {
-                        layer.alert("增加成功", {icon: 6},function () {
-                            var index = parent.layer.getFrameIndex(window.name);
-                            parent.layer.close(index);
-                        });
+                        if (req.state == 'ok') {
+                            layer.alert('增加成功', {icon: 6}, function () {
+                                var index = parent.layer.getFrameIndex(window.name);
+                                parent.layer.close(index);
+                            });
                         } else {
                             layer.msg(req.message, {icon: 2, time: 1500});
                         }

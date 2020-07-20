@@ -82,20 +82,20 @@
 
             //渲染
             $.ajax({
-                url:"/admin/auths/auth/all",
-                method: "GET"
+                url:'/admin/auths/auth/all',
+                method: 'GET'
             }).then((res) => {
                 transfer.render({
                     elem: '#auth'  //绑定元素
                     ,id: 'auth' //定义索引
-                    ,title: ["所有权限", "拥有权限"]
+                    ,title: ['所有权限', '拥有权限']
                     ,data: res.data
                     ,parseData: function(res){
                         return {
-                            "value": res.id //数据值
-                            ,"title": res.authname //数据标题
-                            ,"disabled": ""  //是否禁用
-                            ,"checked": ""//是否选中
+                            'value': res.id //数据值
+                            ,'title': res.authname //数据标题
+                            ,'disabled': ''  //是否禁用
+                            ,'checked': ''//是否选中
                         };
                     }
                 });  
@@ -104,7 +104,7 @@
             //自定义验证规则
             form.verify({
                 rolename: function(value, item){ //value：表单的值、item：表单的DOM对象
-                    if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
+                    if(!new RegExp('^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$').test(value)){
                     return '角色名不能有特殊字符';
                     }
                     if(/(^\_)|(\__)|(\_+$)/.test(value)){
@@ -120,14 +120,14 @@
             form.on('submit(add)', function(data){
                 data.field.authList = transfer.getData('auth');
                 $.ajax({
-                    url:"/admin/auths/role/add",    
-                    dataType:"json",
-                    contentType: "application/json; charset=utf-8",
+                    url:'/admin/auths/role/add',    
+                    dataType:'json',
+                    contentType: 'application/json; charset=utf-8',
                     data: JSON.stringify(data.field),
-                    type:"POST",   
+                    type:'POST',   
                     success:function(req){
-                        if (req.state == "ok") {
-                        layer.alert("增加成功", {icon: 6},function () {
+                        if (req.state == 'ok') {
+                        layer.alert('增加成功', {icon: 6},function () {
                             var index = parent.layer.getFrameIndex(window.name);
                             parent.layer.close(index);
                         });

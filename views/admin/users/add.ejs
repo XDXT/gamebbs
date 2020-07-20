@@ -78,26 +78,26 @@
             upload = layui.upload,
             $      = layui.jquery;
 
-            $("#username").blur(function () {
+            $('#username').change(function () {
                 let value = $(this).val();
-                let tipsDom = $(this).parent().parent().find(".layui-form-mid");
+                let tipsDom = $(this).parent().parent().find('.layui-form-mid');
                 if (value.length > 5 && value.length < 21) {
                     $.ajax({
-                        url:"/api/users/exists",    
-                        dataType:"json",   
-                        data: {"username": value},    
-                        type:"get",   
+                        url:'/api/users/exists',    
+                        dataType:'json',   
+                        data: {'username': value},    
+                        type:'get',   
                     }).then((result) => {
-                        if (result.state == "fail") {
-                            tipsDom.attr("style", "color: #F00!important;").html(result.message);
+                        if (result.state == 'fail') {
+                            tipsDom.attr('style', 'color: #F00!important;').html(result.message);
                         } else {
-                            tipsDom.attr("style", "color: #0F0!important;").html(result.message);
+                            tipsDom.attr('style', 'color: #0F0!important;').html(result.message);
                         }
                     });
                 } else {
-                    tipsDom.attr("style", "color: #F00!important;").html("用户名需要6-20位");
+                    tipsDom.attr('style', 'color: #F00!important;').html('用户名需要6-20位');
                 }
-            })
+            });
             //自定义验证规则
             form.verify({
                 username: layuiFormReg.username
@@ -111,13 +111,13 @@
             //监听提交
             form.on('submit(add)', function(data){
                 $.ajax({
-                    url:"/admin/users/add",    
-                    dataType:"json",   
+                    url:'/admin/users/add',    
+                    dataType:'json',   
                     data: data.field,    
-                    type:"POST",   
+                    type:'POST',   
                     success:function(req){
-                        if (req.state == "ok") {
-                            layer.alert("增加成功", {icon: 6},function () {
+                        if (req.state == 'ok') {
+                            layer.alert('增加成功', {icon: 6},function () {
                                 var index = parent.layer.getFrameIndex(window.name);
                                 parent.layer.close(index);
                             });

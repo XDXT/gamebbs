@@ -148,32 +148,32 @@
                     form = layui.form;
                 let url = location.href;
 
-                let currentNumber = parseInt($(".page .current").text());
-                if (url.indexOf("?name")!=-1 || url.indexOf("&name")!=-1 ) {
-                    if ($(".page .prev")) {
-                        let preurl = $(".page .prev").attr("href");
-                        $(".page .prev").attr("href", preurl + "&page=" + (currentNumber-1));
+                let currentNumber = parseInt($('.page .current').text());
+                if (url.indexOf('?name')!=-1 || url.indexOf('&name')!=-1 ) {
+                    if ($('.page .prev')) {
+                        let preurl = $('.page .prev').attr('href');
+                        $('.page .prev').attr('href', preurl + '&page=' + (currentNumber-1));
                     }
-                    if ($(".page .next")) {
-                        let nexturl = $(".page .next").attr("href");
-                        $(".page .next").attr("href", nexturl + "&page=" + (currentNumber+1));
+                    if ($('.page .next')) {
+                        let nexturl = $('.page .next').attr('href');
+                        $('.page .next').attr('href', nexturl + '&page=' + (currentNumber+1));
                     }
                 }
 
                 /*用户-停用*/
                 window.member_delete = function (obj, id) {
-                    let statusDom = $(obj).parents("tr").find(".td-status").find('span');
+                    let statusDom = $(obj).parents('tr').find('.td-status').find('span');
                     if(statusDom.text() == '已启用') {
                         layer.confirm('确认要停用吗？', function(index) {
                             $.ajax({
-                                method: "post",
-                                url: "/admin/users/delete",
-                                dataType:"json",
-                                contentType: "application/json; charset=utf-8",
-                                data: JSON.stringify({"idList": [id]}),
+                                method: 'post',
+                                url: '/admin/users/delete',
+                                dataType:'json',
+                                contentType: 'application/json; charset=utf-8',
+                                data: JSON.stringify({'idList': [id]}),
                             }).then(function (res) {
-                                if (res.state == "ok") {
-                                    $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已停用');
+                                if (res.state == 'ok') {
+                                    $(obj).parents('tr').find('.td-status').find('span').addClass('layui-btn-disabled').html('已停用');
                                     layer.close(index);
                                     layer.msg('已停用!', {
                                         icon: 5,
@@ -196,18 +196,18 @@
                 }
                 /*恢复*/
                 window.member_restore = function (obj, id) {
-                    let statusDom = $(obj).parents("tr").find(".td-status").find('span');
+                    let statusDom = $(obj).parents('tr').find('.td-status').find('span');
                     if(statusDom.text() == '已停用') {
                         layer.confirm('确认要启用吗？', function(index) {
                             $.ajax({
-                                method: "post",
-                                url: "/admin/users/restore",
-                                dataType:"json",
-                                contentType: "application/json; charset=utf-8",
-                                data: JSON.stringify({"idList": [id]}),
+                                method: 'post',
+                                url: '/admin/users/restore',
+                                dataType:'json',
+                                contentType: 'application/json; charset=utf-8',
+                                data: JSON.stringify({'idList': [id]}),
                             }).then(function (res) {
-                                if (res.state == "ok") {
-                                    $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
+                                if (res.state == 'ok') {
+                                    $(obj).parents('tr').find('.td-status').find('span').removeClass('layui-btn-disabled').html('已启用');
                                     layer.close(index);
                                     layer.msg('已启用!', {
                                         icon: 6,
@@ -233,11 +233,11 @@
                     var data = tableCheck.getData();
                     layer.confirm('确认要停用吗？' + data, function(index) {
                         $.ajax({
-                            method: "post",
-                            url: "/admin/users/delete",
-                            dataType:"json",
-                            contentType: "application/json; charset=utf-8",
-                            data: JSON.stringify({"idList": data}),
+                            method: 'post',
+                            url: '/admin/users/delete',
+                            dataType:'json',
+                            contentType: 'application/json; charset=utf-8',
+                            data: JSON.stringify({'idList': data}),
                         }).then(function (res) {
                             //捉到所有被选中的，发异步进行删除
                             layer.msg('停用成功', {
@@ -252,11 +252,11 @@
                     var data = tableCheck.getData();
                     layer.confirm('确认要启用吗？' + data, function(index) {
                         $.ajax({
-                            method: "post",
-                            url: "/admin/users/restore",
-                            dataType:"json",
-                            contentType: "application/json; charset=utf-8",
-                            data: JSON.stringify({"idList": data}),
+                            method: 'post',
+                            url: '/admin/users/restore',
+                            dataType:'json',
+                            contentType: 'application/json; charset=utf-8',
+                            data: JSON.stringify({'idList': data}),
                         }).then(function (res) {
                             //捉到所有被选中的，发异步进行删除
                             layer.msg('启用成功', {
