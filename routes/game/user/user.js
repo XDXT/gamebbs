@@ -25,8 +25,10 @@ router.post('/register', async function (req, res) {
             result3 = false;
         // 插入用户表
         let password = myutils.routeUtils.md5Encryption(req.body.password);
-        let sql = myutils.sqlMap.insert("user", ['username', 'password']);
-        result1 = await myutils.sqlQuery(sql, [username, password]);
+        let imageIndex = myutils.routeUtils.randomNumber(0, myutils.data.images.header.length-1);
+        let imageUrl = myutils.data.images.header[imageIndex];
+        let sql = myutils.sqlMap.insert("user", ['username', 'password', 'headimg']);
+        result1 = await myutils.sqlQuery(sql, [username, password, imageUrl]);
         // 获取用户id
         if (result1) {
             sql = myutils.sqlMap.select("user", ["id", "username"]);

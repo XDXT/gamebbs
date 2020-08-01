@@ -4,7 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var logger = require('morgan');
+
 var myutils = require('bbs-utils');
+var chatapp = require('./chatapp')
 
 // 引入路由
 var indexRouter = require('./routes/index');
@@ -18,18 +20,22 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+var sessionMiddleware = session({
+  secret: "ascsacfs'.,/#@!scuHJG",
+  resave: false,
+  saveUninitialized: true,
+  cookie: { maxAge: 7 * 24 * 60 * 60 * 1000 }, // 配置cookie默认值 7天
+});
+
+chatapp.bindSession(sessionMiddleware);
+
 // 待删除
-app.use(logger('dev'));
+// app.use(logger('dev'));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({
-  secret: "ascsacfs'.,/#@!scuHJG", 
-  resave: false, 
-  saveUninitialized: true, 
-  cookie: { maxAge: 7 * 24 * 60 * 60 * 1000 }, // 配置cookie默认值 7天
-}));
+app.use(sessionMiddleware);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // 路由拦截

@@ -72,7 +72,7 @@ server {
 
 > **supervisor(非npm的supervisor)**
 
-```
+```bash
 # 格式需要*.conf
 ln -s /var/www/gamebbs/gamebbs.conf /etc/supervisor/conf.d/gamebbs.conf
 ```

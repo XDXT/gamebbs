@@ -3,6 +3,7 @@ var router = express.Router();
 
 var gameRouter = require("./game/game");
 var userRouter = require("./user/user");
+var chatRouter = require("./chat/chat");
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -13,6 +14,7 @@ router.get('/', function(req, res) {
 
 router.use('/play', gameRouter);
 router.use('/user', userRouter);
+router.use('/chat', chatRouter);
 
 
 module.exports = router;
