@@ -10,6 +10,7 @@
 
 
 > **主页: /game**
+
 > pc
 > <img src="./public/img/preview/game-index-pc.jpg" alt="game-index-pc" style="width: 400px" />
 > phone
@@ -18,6 +19,7 @@
 
 
 > **游玩页: /game/play**
+
 > pc
 > <img src="./public/img/preview/game-play-pc.jpg" alt="game-play-pc" style="width: 400px" />
 > phone
@@ -26,6 +28,7 @@
 
 
 > **聊天页: /game/chat#/home**
+
 > jpg
 > <img src="./public/img/preview/game-chat-pc.jpg" alt="game-chat-pc" style="width: 400px" />
 > gif
