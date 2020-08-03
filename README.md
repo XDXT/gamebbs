@@ -12,9 +12,11 @@
 > **主页: /game**
 
 > pc
+
 > <img src="./public/img/preview/game-index-pc.jpg" alt="game-index-pc" style="width: 400px" />
 
 > phone
+
 > <img src="./public/img/preview/game-index-phone.jpg" alt="game-index-phone" style="width: 300px; height: 500px" />
 
 
@@ -22,9 +24,11 @@
 > **游玩页: /game/play**
 
 > pc
+
 > <img src="./public/img/preview/game-play-pc.jpg" alt="game-play-pc" style="width: 400px" />
 
 > phone
+
 > <img src="./public/img/preview/game-play-phone.jpg" alt="game-play-phone" style="width: 400px" />
 
 
@@ -32,9 +36,11 @@
 > **聊天页: /game/chat#/home**
 
 > jpg
+
 > <img src="./public/img/preview/game-chat-pc.jpg" alt="game-chat-pc" style="width: 400px" />
 
 > gif
+
 > <img src="./public/img/preview/game-chatapp.gif" alt="game--chatapp.gif" style="width: 600px" />
 
 ## Requirements
