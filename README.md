@@ -35,11 +35,11 @@
 
 > **聊天页: /game/chat#/home**
 
-> jpg
+> pc
 
 > <img src="./public/img/preview/game-chat-pc.jpg" alt="game-chat-pc" style="width: 400px" />
 
-> gif
+> chat gif
 
 > <img src="./public/img/preview/game-chatapp.gif" alt="game--chatapp.gif" style="width: 600px" />
 
@@ -82,16 +82,16 @@
 
 
 
-## Installation-2  (vue-cli )
+## Installation-2  (vue-cli 待上传)
 
 ### vue  create
-> **(* ) Router**
-> **(* ) Vuex**
-> **(* ) CSS Pre-processors --> less**
-> **( ) Linter / Formatter [vscode 插件代替]**
->
-> **history  no [对该地址始终返回同一个HTML应该可以用history模式]**
-
+```bash
+(* ) Router
+(* ) Vuex
+(* ) CSS Pre-processors --> less
+( ) Linter / Formatter [vscode 插件代替]
+history  no [对该地址始终返回同一个HTML应该可以用history模式]
+```
 
 
 ### dependencies
