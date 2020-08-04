@@ -1,2 +1,4 @@
 # service supervisor restart 
-supervisorctl restart gamebbs
+supervisorctl stop gamebbs
+git pull
+supervisorctl start gamebbs
