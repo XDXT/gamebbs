@@ -16,6 +16,12 @@ body {
     cursor: not-allowed;
 }
 
+a.link-unuse {
+    filter: grayscale(0.9);
+    -webkit-filter: grayscale(0.9);
+    cursor: not-allowed;
+}
+
 .choose_card:hover {
     opacity: 1;
 }
