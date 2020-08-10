@@ -95,12 +95,12 @@ history  no [对该地址始终返回同一个HTML应该可以用history模式]
 ```
 
 
-### dependencies
+### dev dependencies
 
 > **npm install**
 
 ```npm
-  "dependencies": {
+  "devDependencies": {
     "animate.css": "^4.1.0",
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
