@@ -39,8 +39,7 @@
 ...
 
 
-## [点击前往chatapp](https://github.com/XDXT/gamebbs-chatpp)
-
+### [点击前往chatapp](https://github.com/XDXT/gamebbs-chatpp)
 > **聊天页: /game/chat#/home**
 
 > pc
