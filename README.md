@@ -44,6 +44,15 @@
 
 > <img src="./public/img/preview/game-chatapp.gif" alt="game--chatapp.gif" style="width: 600px" />
 
+
+
+> **管理页: /admin**
+...
+
+
+## [vue chatapp](https://github.com/XDXT/gamebbs-chatpp)
+
+
 ## Requirements
 
 * **npm   6.0+**
@@ -52,7 +61,7 @@
 
 
 
-## Installation-1 (express ejs)
+## Installation (express ejs)
 
 ### framework
 
@@ -79,38 +88,6 @@
     "mysql": "^2.18.1",
     "socket.io": "^2.3.0"
   }
-```
-
-
-
-## Installation-2  (vue-cli 待上传)
-
-### vue  create
-```bash
-(* ) Router
-(* ) Vuex
-(* ) CSS Pre-processors --> less
-( ) Linter / Formatter [vscode 插件代替]
-history  no [对该地址始终返回同一个HTML应该可以用history模式]
-```
-
-
-### dev dependencies
-
-> **npm install**
-
-```npm
-  "devDependencies": {
-    "animate.css": "^4.1.0",
-    "axios": "^0.19.2",
-    "core-js": "^3.6.5",
-    "echarts": "^4.8.0",
-    "socket.io-client": "^2.3.0",
-    "vant": "^2.9.4",
-    "vue": "^2.6.11",
-    "vue-router": "^3.2.0",
-    "vuex": "^3.4.0"
-  },
 ```
 
 
