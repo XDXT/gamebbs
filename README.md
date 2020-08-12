@@ -67,7 +67,6 @@
 
 1. **[layui 2.5+](https://www.layui.com/)**
 2. **[WeAdmin 2019.6](https://gitee.com/lovetime/WeAdmin)**
-3. **[vue.js 2.x](https://cn.vuejs.org/)**
 
 
 
