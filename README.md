@@ -34,6 +34,13 @@
 
 
 
+> **管理页: /admin**
+
+...
+
+
+## [点击前往chatapp](https://github.com/XDXT/gamebbs-chatpp)
+
 > **聊天页: /game/chat#/home**
 
 > pc
@@ -45,12 +52,6 @@
 > <img src="./public/img/preview/game-chatapp.gif" alt="game--chatapp.gif" style="width: 600px" />
 
 
-
-> **管理页: /admin**
-...
-
-
-## [vue chatapp](https://github.com/XDXT/gamebbs-chatpp)
 
 
 ## Requirements
